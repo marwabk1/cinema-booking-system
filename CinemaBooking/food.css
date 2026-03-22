@@ -1,0 +1,144 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #222;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: #444;
+    border-radius: 5px;
+}
+
+/* Food Sections */
+.food-section {
+    text-align: center;
+    padding: 30px 10px;
+    margin: 20px 0;
+    background-color: #fff;
+}
+
+.food-section h1 {
+    font-size: 2.5rem;
+    color: #e50914;
+    margin-bottom: 20px;
+}
+
+.food-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.food-box {
+    width: 200px;
+    height: 250px;
+    position: relative; /* Position relative for overlay */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure overlay stays within the box */
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.food-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+    z-index: 1; /* Places the overlay below the text */
+}
+
+.food-box h3,
+.food-box select {
+    position: relative;
+    z-index: 2; /* Ensures text is above the overlay */
+}
+
+.food-box select {
+    margin-top: 10px;
+    padding: 8px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.food-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Add background images for each box */
+.cheese-popcorn { background: url('Assets/cheesepop.jpg') no-repeat center center/cover; }
+.caramel-popcorn { background: url('Assets/caramelpop.jpg') no-repeat center center/cover; }
+.soda { background: url('Assets/soda.jpg') no-repeat center center/cover; }
+.juice { background: url('Assets/juices.jpg') no-repeat center center/cover; }
+.water { background: url('Assets/water.png') no-repeat center center/cover; }
+.chocolate { background: url('Assets/chocolates.jpeg') no-repeat center center/cover; }
+.gummies { background: url('Assets/gummies.jpg') no-repeat center center/cover; }
+.hard-candy { background: url('Assets/hardcandy.jpeg') no-repeat center center/cover; }
+
+.buy-button-container {
+    text-align: center;
+    margin-top: 40px; /* Add more spacing above the button */
+    margin-bottom: 50px; /* Add spacing to avoid engaging with the footer */
+}
+
+.buy-btn {
+    background-color: #e50914;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #b20710;
+}
+
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+}

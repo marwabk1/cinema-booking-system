@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link type="text/css" rel="stylesheet" href="../payment.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">CINX</div>
+    </header>
+
+    <main class="receipt-container">
+        <h1>Receipt</h1>
+
+        <!-- Movie Ticket Section -->
+        <section class="receipt-section">
+            <h2>Movie Ticket</h2>
+            <div id="movieTicket">
+                <p><strong>Movie:</strong> The Avengers</p>
+                <p><strong>Date:</strong> December 25, 2024</p>
+                <p><strong>Time:</strong> 7:30 PM</p>
+                <p><strong>Seat:</strong> A12</p>
+                <p><strong>Price:</strong> $12.00</p>
+            </div>
+        </section>
+
+        <!-- Food Order Section -->
+        <div class="food-receipt">
+            <h2>Food Order</h2>
+            <ul id="food-list"></ul>
+        </div>
+        
+        <!-- Total Section -->
+        <div class="total">
+            <h2>Total</h2>
+            <p id="total-amount" style="font-size: 1.5rem; color: red;">$0.00</p>
+        </div>
+        
+        <!-- Buy Now Button -->
+        <div class="buy-button-container">
+            <button class="buy-btn" onclick="redirectToBuyPage()">Buy Now</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 CINX. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function generateReceipt() {
+            // Base price for movie ticket
+            let total = 12.0;
+
+            // Retrieve food selections from localStorage
+            const foodSelections = JSON.parse(localStorage.getItem("foodSelections"));
+            const foodReceiptDiv = document.getElementById("foodReceipt");
+
+            if (foodSelections) {
+                let foodHTML = `<ul>`;
+                for (const [item, value] of Object.entries(foodSelections)) {
+                    if (value !== "None") {
+                        // Extract the price from the selection string
+                        const priceMatch = value.match(/\$([\d.]+)/);
+                        const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+                        total += price;
+
+                        // Add to receipt
+                        foodHTML += `
+                            <li>
+                                <strong>${item}:</strong> ${value}
+                                <span class="item-price">($${price.toFixed(2)})</span>
+                            </li>`;
+                    }
+                }
+                foodHTML += `</ul>`;
+                foodReceiptDiv.innerHTML = foodHTML;
+            } else {
+                foodReceiptDiv.innerHTML = "<p>No items selected.</p>";
+            }
+
+            // Update Total Price
+            document.getElementById("totalPrice").innerText = `$${total.toFixed(2)}`;
+        }
+
+        // Generate the receipt on page load
+        window.onload = generateReceipt;
+
+        // Redirect to Buy Page
+        function redirectToBuyPage() {
+            window.location.href = "buy.html"; // Redirect to the Buy Page
+        }
+    </script>
+</body>
+</html>

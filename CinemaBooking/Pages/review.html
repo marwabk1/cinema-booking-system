@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Review</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="../reviews.css">
+  </head>
+  <body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">CINX</div>
+        <nav>
+            <ul class="nav-links">
+            <li><a href="welcome.html">Home</a></li>
+            <li><a href="movie.html">Movies</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="about.html">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="review-container">
+      <h2>Share Your Experience</h2>
+
+      <!-- Overall Experience -->
+      <div class="review-box">
+        <h4>Overall Experience</h4>
+        <div class="stars" id="stars-overall">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+
+      <!-- Screening Experience -->
+      <div class="review-box">
+        <h4>Screening Experience</h4>
+        <div class="stars" id="stars-screening">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+
+      <!-- Food Experience -->
+      <div class="review-box">
+        <h4>Food Experience</h4>
+        <div class="stars" id="stars-food">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+
+      <!-- Service Experience -->
+      <div class="review-box">
+        <h4>Service Experience</h4>
+        <div class="stars" id="stars-service">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+
+      <!-- General Comments -->
+      <div class="general-comments">
+        <h4>General Comments</h4>
+        <textarea
+          rows="4"
+          placeholder="Share any additional thoughts or feedback..."
+        ></textarea>
+        <button class="submit-btn" id="submit-btn">Submit Review</button>
+        <!-- Thank You Message -->
+        <p class="thank-you-message" id="thank-you-message">
+          Thank you for your review!
+        </p>
+      </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+      // Handle star selection
+      const starContainers = document.querySelectorAll(".stars");
+
+      starContainers.forEach((container) => {
+        const stars = container.querySelectorAll(".star");
+        stars.forEach((star) => {
+          star.addEventListener("click", () => {
+            const value = parseInt(star.getAttribute("data-value"));
+            stars.forEach((s, index) => {
+              if (index < value) {
+                s.classList.add("selected");
+              } else {
+                s.classList.remove("selected");
+              }
+            });
+          });
+        });
+      });
+
+      // Display thank-you message on submit
+      const submitButton = document.getElementById("submit-btn");
+      const thankYouMessage = document.getElementById("thank-you-message");
+
+      submitButton.addEventListener("click", () => {
+        thankYouMessage.style.display = "block";
+      });
+    </script>
+  </body>
+</html>

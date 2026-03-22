@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Seats</title>
+    <link type="text/css" rel="stylesheet" href="../seats.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">CINX</div>
+    </header>
+
+    <!-- Seats Section -->
+    <section class="seats-section">
+        <h1 id="movie-title">Select Seats</h1>
+        <div class="screen">Screen This Way</div>
+        <div class="seat-grid">
+            <!-- Seat rows and columns -->
+            <div class="row" data-row="A">
+                <div class="seat-label">A</div>
+                <button class="seat" data-seat="A1">A1</button>
+                <button class="seat" data-seat="A2">A2</button>
+                <button class="seat" data-seat="A3">A3</button>
+                <button class="seat" data-seat="A4">A4</button>
+                <button class="seat" data-seat="A5">A5</button>
+                <button class="seat" data-seat="A6">A6</button>
+                <button class="seat" data-seat="A7">A7</button>
+                <button class="seat" data-seat="A8">A8</button>
+            </div>
+            <div class="row" data-row="B">
+                <div class="seat-label">B</div>
+                <button class="seat" data-seat="B1">B1</button>
+                <button class="seat" data-seat="B2">B2</button>
+                <button class="seat" data-seat="B3">B3</button>
+                <button class="seat" data-seat="B4">B4</button>
+                <button class="seat" data-seat="B5">B5</button>
+                <button class="seat" data-seat="B6">B6</button>
+                <button class="seat" data-seat="B7">B7</button>
+                <button class="seat" data-seat="B8">B8</button>
+            </div>
+            <div class="row" data-row="C">
+                <div class="seat-label">C</div>
+                <button class="seat" data-seat="C1">C1</button>
+                <button class="seat" data-seat="C2">C2</button>
+                <button class="seat" data-seat="C3">C3</button>
+                <button class="seat" data-seat="C4">C4</button>
+                <button class="seat" data-seat="C5">C5</button>
+                <button class="seat" data-seat="C6">C6</button>
+                <button class="seat" data-seat="C7">C7</button>
+                <button class="seat" data-seat="C8">C8</button>
+            </div>
+            <div class="row" data-row="D">
+                <div class="seat-label">D</div>
+                <button class="seat" data-seat="D1">D1</button>
+                <button class="seat" data-seat="D2">D2</button>
+                <button class="seat" data-seat="D3">D3</button>
+                <button class="seat" data-seat="D4">D4</button>
+                <button class="seat" data-seat="D5">D5</button>
+                <button class="seat" data-seat="D6">D6</button>
+                <button class="seat" data-seat="D7">D7</button>
+                <button class="seat" data-seat="D8">D8</button>
+            </div>
+        </div>
+        <button class="confirm-btn">Confirm Booking</button>
+    </section>
+
+    <!-- Modal Dialog -->
+  <div id="snack-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <p>Would you like to purchase some snacks?</p> <!-- Ensure this text is present -->
+        <button id="snack-yes">Yes</button>
+        <button id="snack-no">No</button>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 CINX. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Extract movie title from URL
+        const params = new URLSearchParams(window.location.search);
+        const movieTitle = params.get('movie');
+        if (movieTitle) {
+            document.getElementById('movie-title').textContent = `Select Seats for ${movieTitle}`;
+        }
+
+        // Seat selection logic
+        const seats = document.querySelectorAll('.seat');
+        seats.forEach(seat => {
+            seat.addEventListener('click', () => {
+                seat.classList.toggle('selected');
+            });
+        });
+
+        // Modal logic
+        const modal = document.getElementById('snack-modal');
+        const snackYes = document.getElementById('snack-yes');
+        const snackNo = document.getElementById('snack-no');
+
+        document.querySelector('.confirm-btn').addEventListener('click', () => {
+            const selectedSeats = Array.from(document.querySelectorAll('.seat.selected'))
+                .map(seat => seat.dataset.seat);
+            if (selectedSeats.length > 0) {
+                modal.style.display = 'block'; // Show modal
+            } else {
+                alert('Please select at least one seat.');
+            }
+        });
+
+        // Redirect to Food Page
+        snackYes.addEventListener('click', () => {
+            window.location.href = 'food.html';
+        });
+
+        // Redirect to Payment Page
+        snackNo.addEventListener('click', () => {
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>

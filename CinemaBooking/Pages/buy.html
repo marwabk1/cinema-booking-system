@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link type="text/css" rel="stylesheet" href="../buy.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">CINX</div>
+    </header>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <h1>Billing Information</h1>
+        <form class="billing-form" id="billing-form">
+            <!-- Display Selected Seats -->
+            <div class="info">
+                <label>Selected Seats:</label>
+                <p id="selected-seats">None</p>
+            </div>
+
+            <!-- Credit Card Information -->
+            <div class="form-group">
+                <label for="card-holder-name">Cardholder Name</label>
+                <input type="text" id="card-holder-name" name="card-holder-name" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" maxlength="16" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Expiry Date</label>
+                <input type="month" id="expiry-date" name="expiry-date" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="password" id="cvv" name="cvv" maxlength="3" required>
+            </div>
+
+            <!-- Billing Address -->
+            <div class="form-group">
+                <label for="billing-address">Billing Address</label>
+                <textarea id="billing-address" name="billing-address" rows="3" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="confirm-btn">Buy Now</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 CINX. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Extract seat data from URL and display it
+        const params = new URLSearchParams(window.location.search);
+        const seats = params.get('seats');
+        if (seats) {
+            document.getElementById('selected-seats').textContent = seats.replace(/,/g, ', ');
+        }
+
+        // Handle form submission
+        document.getElementById('billing-form').addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form from submitting
+            alert('Payment successful! Thank you for your purchase.');
+            // Redirect to a success page or main page after payment
+            window.location.href = "success.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Receipt Container */
+.receipt-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.receipt-container h1 {
+    text-align: center;
+    color: #e50914;
+    margin-bottom: 20px;
+}
+
+.receipt-section {
+    margin-bottom: 20px;
+}
+
+.receipt-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.receipt-section p, .receipt-section li {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.receipt-section li .item-price {
+    color: #e50914;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.total-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.total-section p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e50914;
+}
+
+/* Buy Now Button */
+.buy-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buy-btn {
+    background-color: #e50914;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #b20710;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINX Food Order</title>
+    <link type="text/css" rel="stylesheet" href="../food.css">
+    <script defer src="../food.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">CINX</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="welcome.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="food.html">Food</a></li>
+                <li><a href="review.html">Reviews</a></li>
+                <li><a href="about.html">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="food-section">
+        <h1>Popcorn</h1>
+        <div class="food-options">
+            <div class="food-box cheese-popcorn">
+                <h3>Cheese Flavor</h3>
+                <select id="cheese-popcorn">
+                    <option value="None">None</option>
+                    <option value="Small">Small - $3.00</option>
+                    <option value="Medium">Medium - $5.00</option>
+                    <option value="Large">Large - $7.00</option>
+                </select>
+            </div>
+            <div class="food-box caramel-popcorn">
+                <h3>Caramel Flavor</h3>
+                <select id="caramel-popcorn">
+                    <option value="None">None</option>
+                    <option value="Small">Small - $3.50</option>
+                    <option value="Medium">Medium - $5.50</option>
+                    <option value="Large">Large - $7.50</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-section">
+        <h1>Drinks</h1>
+        <div class="food-options">
+            <div class="food-box soda">
+                <h3>Soda</h3>
+                <select id="soda">
+                    <option value="None">None</option>
+                    <option value="Cola">Cola - $2.50</option>
+                    <option value="Sprite">Sprite - $2.50</option>
+                    <option value="Fanta">Fanta - $2.50</option>
+                </select>
+            </div>
+            <div class="food-box juice">
+                <h3>Juice</h3>
+                <select id="juice">
+                    <option value="None">None</option>
+                    <option value="Orange">Orange - $3.00</option>
+                    <option value="Apple">Apple - $3.00</option>
+                    <option value="Pineapple">Pineapple - $3.50</option>
+                </select>
+            </div>
+            <div class="food-box water">
+                <h3>Water</h3>
+                <select id="water">
+                    <option value="None">None</option>
+                    <option value="Small">Small - $1.50</option>
+                    <option value="Large">Large - $2.50</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-section">
+        <h1>Candies</h1>
+        <div class="food-options">
+            <div class="food-box chocolate">
+                <h3>Chocolate</h3>
+                <select id="chocolate">
+                    <option value="None">None</option>
+                    <option value="Twix">Twix - $2.00</option>
+                    <option value="Snickers">Snickers - $2.50</option>
+                    <option value="M&M">M&M - $3.00</option>
+                </select>
+            </div>
+            <div class="food-box gummies">
+                <h3>Gummies</h3>
+                <select id="gummies">
+                    <option value="None">None</option>
+                    <option value="Sour Gummies">Sour Gummies - $2.50</option>
+                    <option value="Sweet Gummies">Sweet Gummies - $2.50</option>
+                </select>
+            </div>
+            <div class="food-box hard-candy">
+                <h3>Hard Candy</h3>
+                <select id="hard-candy">
+                    <option value="None">None</option>
+                    <option value="Lollipop">Lollipop - $1.50</option>
+                    <option value="Jolly Rancher">Jolly Rancher - $2.00</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <div class="buy-button-container">
+        <button onclick="storeSelection()" class="buy-btn">Buy Now</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 CINX. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.buy-btn').addEventListener('click', () => {
+            const foodSelections = [];
+        
+            // Popcorn selections
+            const cheesePopcorn = document.querySelector('.cheese-popcorn select').value;
+            if (cheesePopcorn !== 'None') foodSelections.push({ item: 'Cheese Flavor (Popcorn)', size: cheesePopcorn, price: cheesePopcorn === 'small' ? 3 : cheesePopcorn === 'medium' ? 5 : 7 });
+        
+            const caramelPopcorn = document.querySelector('.caramel-popcorn select').value;
+            if (caramelPopcorn !== 'None') foodSelections.push({ item: 'Caramel Flavor (Popcorn)', size: caramelPopcorn, price: caramelPopcorn === 'small' ? 3.5 : caramelPopcorn === 'medium' ? 5.5 : 7.5 });
+        
+            // Drink selections
+            const soda = document.querySelector('.soda select').value;
+            if (soda !== 'None') foodSelections.push({ item: 'Soda', size: soda, price: 2.5 });
+        
+            const juice = document.querySelector('.juice select').value;
+            if (juice !== 'None') foodSelections.push({ item: 'Juice', size: juice, price: 3 });
+        
+            const water = document.querySelector('.water select').value;
+            if (water !== 'None') foodSelections.push({ item: 'Water', size: water, price: water === 'small' ? 1.5 : 2.5 });
+        
+            // Candy selections
+            const chocolate = document.querySelector('.chocolate select').value;
+            if (chocolate !== 'None') foodSelections.push({ item: 'Chocolate', variety: chocolate, price: chocolate === 'twix' ? 2 : chocolate === 'snickers' ? 2.5 : 3 });
+        
+            const gummies = document.querySelector('.gummies select').value;
+            if (gummies !== 'None') foodSelections.push({ item: 'Gummies', variety: gummies, price: 2.5 });
+        
+            const hardCandy = document.querySelector('.hard-candy select').value;
+            if (hardCandy !== 'None') foodSelections.push({ item: 'Hard Candy', variety: hardCandy, price: hardCandy === 'lollipop' ? 1.5 : 2 });
+        
+            // Save selections to local storage
+            localStorage.setItem('foodSelections', JSON.stringify(foodSelections));
+            window.location.href = 'payment.html';
+        });
+        </script>
+        
+    
+</body>
+</html>
